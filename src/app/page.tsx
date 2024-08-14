@@ -6,8 +6,13 @@ import { Input } from "./_components/ui/input";
 import { SearchIcon } from "lucide-react";
 import { Card, CardContent } from "./_components/ui/card";
 import { Avatar, AvatarImage } from "./_components/ui/avatar";
+import { db } from "./_lib/prisma";
+import BarbershopItem from "./_components/barbershop-item";
 
-const Home = () => {
+const Home = async () => {
+  //chamar meu banco de dados
+  const babershops = await db.barbershop.findMany({});
+
   return (
     <div>
       <Header />
@@ -34,7 +39,11 @@ const Home = () => {
         </div>
 
         {/* Agendamento */}
-        <Card className="mt-6">
+        <h2 className="mb-3 mt-6 uppercase text-xs text-gray-400 font-bold">
+          Agendamento
+        </h2>
+
+        <Card>
           <CardContent className="flex justify-between p-0">
             {/* Esquerda */}
             <div className="flex flex-col gap-2 py-5 pl-6">
@@ -56,6 +65,17 @@ const Home = () => {
             </div>
           </CardContent>
         </Card>
+
+        {/* Recomendados */}
+        <h2 className="mb-3 mt-6 uppercase text-xs text-gray-400 font-bold">
+          Recomendados
+        </h2>
+
+        <div className="flex gap-4 overflow-auto [&:: -webkit-scrollbar]:hidden">
+          {babershops.map((barbershop) => (
+            <BarbershopItem key={barbershop.id} barbershop={barbershop} />
+          ))}
+        </div>
       </div>
     </div>
   );
