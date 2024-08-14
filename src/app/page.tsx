@@ -27,13 +27,58 @@ const Home = async () => {
         </h2>
         <p>Quarta-feira, 08 de Agosto</p>
 
-        <div className="flex items-center gap-2 mt-6">
+        {/* Busca */}
+        <div className="flex items-center gap-2 mt-2">
           <Input placeholder="Faça sua busca..." />
           <Button size="icon">
             <SearchIcon />
           </Button>
         </div>
 
+        {/* Busca Rápida */}
+        <div className="flex gap-3 mt-5 overflow-x-scroll [&:: -webkit-scrollbar]:hidden">
+          <Button className="gap-2" variant="secondary">
+            <Image src="/icon-corte.png" width={16} height={16} alt="Cabelo" />
+            Cabelo
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image src="/icon-barba.png" width={16} height={16} alt="Barba" />
+            Barba
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/icon-aparar.png"
+              width={16}
+              height={16}
+              alt="Acabamento"
+            />
+            Acabamento
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/icon-aparar.png"
+              width={16}
+              height={16}
+              alt="Acabamento"
+            />
+            Pezinho
+          </Button>
+
+          <Button className="gap-2" variant="secondary">
+            <Image
+              src="/icon-aparar.png"
+              width={16}
+              height={16}
+              alt="Acabamento"
+            />
+            Sobrancelha
+          </Button>
+        </div>
+
+        {/* BANNER */}
         <div className="relative mt-6 w-full h-[150px]">
           <Image
             alt="Agende nos melhores com o FSW Barber"
@@ -93,6 +138,17 @@ const Home = async () => {
           ))}
         </div>
       </div>
+
+      <footer className="mt-5">
+        <Card>
+          <CardContent className="px-5 py-6">
+            <p className="text-sm text-gray-400">
+              © 2024 Copyright
+              <span className="font-bold"> FSW Barber</span>
+            </p>
+          </CardContent>
+        </Card>
+      </footer>
     </div>
   );
 };
